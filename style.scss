@@ -1,3 +1,35 @@
+@import url('https://use.typekit.net/dee0jnt.css');
+/* COLORS */
+$red: #e44645;
+$brown: #6d3235;
+$white: #ffffff;
+$gray: #a7a7a7;
+/* PADDING */
+$document_padding: 10px;
+$section_padding: 15px;
+/* FONTS */
+$font-primary: 'refrigerator-deluxe', sans-serif;
+$font-secondary: 'Times New Roman', Times, serif;
+/* FONTS WEIGHTS */
+$font-weight-extra-bold: 800;
+$font-weight-heavy: 900;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
 body {
-    background: red;
+    background: $white;
+}
+
+h1 {
+    font-family: $font-primary;
+    font-weight: $font-weight-heavy;
+    text-transform: uppercase;
+    font-size: 4rem;
 }
