@@ -8,18 +8,22 @@
 </head>
 
 <body>
+	<div class='intro'>
+		<img src='assets/imgs/logo_white.svg'>
+	</div>
+
     <div class='hero'>
-        <div class='header scrolled'>
-            <a class='logo'>
+        <div class='header'>
+            <a class='logo' id='logo'>
                 <h1>Al-Gamal for Engineering</h1>
                 <img src='assets/imgs/logo.svg'>
             </a>
 
-            <ul class='nav gray'>
-                <li><a>Background</a></li>
-                <li><a>Organization</a></li>
-                <li><a>Manager</a></li>
-                <li><a>Activities</a></li>
+            <ul class='nav-list gray'>
+                <li><a id='background-nav-btn'>Background</a></li>
+                <li><a id='organization-nav-btn'>Organization</a></li>
+                <li><a id='manager-nav-btn'>Manager</a></li>
+                <li><a id='activities-nav-btn'>Activities</a></li>
             </ul>
         </div>
 
@@ -28,10 +32,16 @@
         </div>
     </div>
 
-    <div class='section'>
-        <div class='banner'>
-            <h2>Background</h2>
-            <h3>of Al-Gamal for Engineering</h3>
+    <div class='section' id='background-section'>
+        <div class='banner main-banner'>
+			<h2>Background</h2>
+			<h3>of Al-Gamal for Engineering</h3>
+
+			<div class='banner-overlay'>
+				<h3>Professional</h3>
+				<h2>Engineering</h2>
+				<h3>Services</h3>
+			</div>
         </div>
 
         <div class='section-content'>
@@ -50,7 +60,7 @@
             </p>
             <br>
 
-            <ul class='content red'>
+            <ul class='content-list red'>
                 <li>Structural engineering</li>
                 <li>Electrical engineering</li>
                 <li>Mechanical engineering</li>
@@ -69,7 +79,7 @@
         </div>
     </div>
 
-    <div class='section'>
+    <div class='section' id='organization-section'>
         <div class='banner'>
             <h2>Organization</h2>
         </div>
@@ -84,7 +94,7 @@
 				<div>
 					<h4 class='red'>Civil Works</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Construction</li>
 						<li>Designing</li>
 						<li>Construction Supervising</li>
@@ -95,7 +105,7 @@
 				<div>
 					<h4 class='red'>Training</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Elec. & Mech.</li>
 						<li>System Operation</li>
 						<li>Maintenance</li>
@@ -108,7 +118,7 @@
 				<div>
 					<h4 class='red'>Administrative & Finance</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Finance & Budgeting</li>
 						<li>Procurement</li>
 					</ul>
@@ -117,7 +127,7 @@
 				<div>
 					<h4 class='red'>Graphic Design & Web Development</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Interactive</li>
 						<li>Branding</li>
 						<li>Web Design</li>
@@ -132,7 +142,7 @@
 				<div>
 					<h4 class='red'>Electrical & Renewable Energy</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>PV and Wind Systems</li>
 						<li>Heating and Ventilation</li>
 						<li>Electrical distribution system</li>
@@ -143,7 +153,7 @@
 				<div>
 					<h4 class='red'>IT Services & Solutions</h4>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Digital Transformation Services</li>
 						<li>Cybersecurity and Risk Management</li>
 						<li>Managed IT Services</li>
@@ -155,7 +165,7 @@
         </div>
     </div>
 
-    <div class='section'>
+    <div class='section' id='manager-section'>
         <div class='banner'>
             <h2>General Manager</h2>
         </div>
@@ -176,7 +186,7 @@
             </p>
             <br>
 
-            <ul class='content red'>
+            <ul class='content-list red'>
                 <li>Power system engineering</li>
                 <li>SCADA and control systems</li>
                 <li>Substation automation</li>
@@ -187,7 +197,7 @@
         </div>
     </div>
 
-    <div class='section'>
+    <div class='section' id='activities-section'>
         <div class='banner'>
             <h2>Field of Activities</h2>
         </div>
@@ -198,7 +208,7 @@
 					<h4 class='red'>1. Water and Environment Projects:</h4>
 					<br>
 
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Water Supply</li>
 						<li>Water Distribution</li>
 						<li>Water Storage</li>
@@ -218,7 +228,7 @@
 					<h4 class='red'>2. Materials, Geotechnical & Q.C. Laboratories:</h4>
 					<br>
 
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Aggregate Testing</li>
 						<li>Concrete Testing</li>
 						<li>Asphalt Testing</li>
@@ -234,7 +244,7 @@
 					<h4 class='red'>3. Electrical and Renewable Energy Works</h4>
 					<br>
 
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Photo Voltage Systems</li>
 						<li>Wind Energy</li>
 						<li>Geothermal</li>
@@ -249,7 +259,7 @@
 					<h4 class='red'>4. Training (Industrial)</h4>
 					<br>
 					
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Operation</li>
 						<li>Maintenance</li>
 						<li>Safety</li>
@@ -260,7 +270,7 @@
 					<h4 class='red'>5. IT Services and Solutions</h4>
 					<br>
 
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Digital Transformation Services</li>
 						<li>Cybersecurity and Risk Management</li>
 						<li>Managed IT Services</li>
@@ -273,7 +283,7 @@
 					<h4 class='red'>6. Graphic Design & Web Development</h4>
 					<br>
 
-					<ul class='content gray'>
+					<ul class='content-list gray'>
 						<li>Interactive</li>
 						<li>Branding</li>
 						<li>Web Design</li>
@@ -286,34 +296,33 @@
         </div>
     </div>
 
-    <div class='section'>
-        <div class='banner'>
-            <ul class='footer white'>
-				<li>,الجمهورية اليمنية – صنعاء</li>
-				<li>شملان – جوار وفره هايبر</li>
-				<li>Republic of Yemen – Sana'a,</li>
-				<li>Shamlan, near Wafrah Hyper</li>
-				<li>PO Box: 13282 Sana'a Yemen</li>
-				<li>Telefax: +967-1-387956</li>
-				<li>Mobile: +967-770432043</li>
-				<li>Email: gamalhazza@gmail.com</li>
-            </ul>
+    <div class='footer'>
+        <ul class='footer-list white'>
+			<li class='arabic'>,الجمهورية اليمنية – صنعاء</li>
+			<li class='arabic'>شملان – جوار وفره هايبر</li>
+			<li>Republic of Yemen – Sana'a,</li>
+			<li>Shamlan, near Wafrah Hyper</li>
+			<li>PO Box: 13282 Sana'a Yemen</li>
+			<li>Telefax: +967-1-387956</li>
+			<li><a href="tel:+967770432043">Mobile: +967-770432043</a></li>
+			<li><a href="mailto:gamalhazza@gmail.com">Email: gamalhazza@gmail.com</a></li>
+        </ul>
 
-			<h4 class='white'>Firm’s Registrations</h4>
+		<h4 class='white'>Firm’s Registrations</h4>
+		<br>
 
-			<div>
-				<ul class='footer white'>
-					<li>1) Capital Secretary</li>
-					<li>General Roads and Public Works office</li>
-					<li>Authorization No.# 3291</li>
-				</ul>
+		<div class='registrations'>
+			<ul class='footer-list white'>
+				<li>1) Capital Secretary</li>
+				<li>General Roads and Public Works office</li>
+				<li>Authorization No.# 3291</li>
+			</ul>
 
-				<ul class='footer white'>
-					<li>2) Ministry of Industry& Trade</li>
-					<li>Commercial Register No. # 2/31931</li>
-				</ul>
-			</div>
-        </div>
+			<ul class='footer-list white'>
+				<li>2) Ministry of Industry & Trade</li>
+				<li>Commercial Register No. # 2/31931</li>
+			</ul>
+		</div>
     </div>
 
     <script src='script.js'></script>
