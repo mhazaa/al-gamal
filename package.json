@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "sass style.scss style.css",
-    "dev": "sass style.scss style.css --watch"
+    "build": "concurrently \"sass style.scss style.css\" \"tsc script.ts\"",
+	"dev": "concurrently \"sass style.scss style.css --watch\" \"tsc script.ts -- watch\""
   },
   "keywords": [],
   "author": "Magdi Hazaa",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.69.2"
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.53.0",
+    "sass": "^1.69.2",
+    "typescript": "^5.2.2"
   }
 }
