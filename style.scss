@@ -26,9 +26,8 @@ $clip-transition: clip-path 0.4s cubic-bezier(.08,.72,.34,.99);
 /* DIMENSIONS */
 $graphic-max-width: 600px;
 $section-max-width: 800px;
-$banner-height-desktop: 250px;
-$banner-height-mobile: 200px;
-$banner-height-scrolled: 150px;
+$banner-height: 200px;
+$banner-height-scrolled: 100px;
 /* BREAKPOINTS */
 $mobile-breakpoint: 768px;
 
@@ -108,8 +107,8 @@ h2 {
     font-family: $font-primary;
     font-weight: $font-weight-heavy;
     text-transform: uppercase;
-    font-size: 7rem;
-    line-height: 5.5rem;
+    font-size: 4rem;
+    line-height: 3rem;
     color: $white;
 }
 
@@ -117,8 +116,8 @@ h3 {
     font-family: $font-primary;
     font-weight: $font-weight-heavy;
     text-transform: uppercase;
-    font-size: 3rem;
-    line-height: 2rem;
+    font-size: 1.75rem;
+    line-height: 1.5rem;
     color: $white;
 }
 
@@ -289,17 +288,13 @@ img {
 			background: $red;
 			position: relative;
 			width: 100%;
-			height: $banner-height-desktop;
+			height: $banner-height;
 			text-align: center;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			transition: $height-transition;
-	
-			@media (max-width: $mobile-breakpoint) {
-				height: $banner-height-mobile;
-			}
-			
+
 			.banner-slide {
 				position: absolute;
 				left: 50%;
@@ -353,12 +348,8 @@ img {
 .dummy-element {
 	position: relative;
 	height: 100vh;
-	margin-top: -$banner-height-desktop;
+	margin-top: -$banner-height;
 	z-index: -1;
-	
-	@media (max-width: $mobile-breakpoint) {
-		margin-top: -$banner-height-mobile;
-	}
 }
 
 .border {
@@ -432,6 +423,17 @@ img {
 
 			&:first-child {
 				padding-right: $inner-section-padding;
+			}
+		}
+
+		@media (max-width: $mobile-breakpoint) {
+			flex-direction: column;
+			align-items: center;
+
+			ul {
+				&:first-child {
+					padding-right: 0;
+				}
 			}
 		}
 	}
