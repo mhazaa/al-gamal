@@ -26,7 +26,7 @@ $clip-transition: clip-path 0.4s cubic-bezier(.08,.72,.34,.99);
 /* DIMENSIONS */
 $graphic-max-width: 600px;
 $section-max-width: 800px;
-$banner-height-desktop: 275px;
+$banner-height-desktop: 250px;
 $banner-height-mobile: 200px;
 $banner-height-scrolled: 150px;
 /* BREAKPOINTS */
@@ -108,8 +108,8 @@ h2 {
     font-family: $font-primary;
     font-weight: $font-weight-heavy;
     text-transform: uppercase;
-    font-size: 8rem;
-    line-height: 6rem;
+    font-size: 7rem;
+    line-height: 5.5rem;
     color: $white;
 }
 
@@ -117,8 +117,8 @@ h3 {
     font-family: $font-primary;
     font-weight: $font-weight-heavy;
     text-transform: uppercase;
-    font-size: 3.45rem;
-    line-height: 2.5rem;
+    font-size: 3rem;
+    line-height: 2rem;
     color: $white;
 }
 
@@ -344,7 +344,7 @@ img {
 
 		.graphic {
 			img {
-				right: 0;
+				right: -5%;
 				width: 40%;
 			}
 
