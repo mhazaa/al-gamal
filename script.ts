@@ -10,6 +10,8 @@ const ORGANIZATION_BORDER: HTMLDivElement | null = document.body.querySelector('
 const MANAGER_BORDER: HTMLDivElement | null = document.body.querySelector('#manager-border');
 const ACTIVITIES_BORDER: HTMLDivElement | null = document.body.querySelector('#activities-border');
 
+const FOOTER: HTMLDivElement | null = document.body.querySelector('.footer');
+
 const updateIntro = () => {
 	const blockBody = () => document.documentElement.style.overflowY = 'hidden';
 	const unblockBody = () => document.documentElement.style.overflowY = 'auto';
@@ -36,7 +38,7 @@ const updateHero = () => {
 
 	const st = document.documentElement.scrollTop;
 
-	const changePage = (page?: 'home' | 'background' | 'organization' | 'manager' | 'activities') => {
+	const changePage = (page?: 'home' | 'background' | 'organization' | 'manager' | 'activities' | 'footer') => {
 		resetNavigationButtons();
 		resetSlides();
 
@@ -53,21 +55,21 @@ const updateHero = () => {
 			break;
 
 		case 'organization':
-			HERO.classList.add('scrolled');
 			NAVIGATION_BUTTONS[1].classList.add('selected');
 			BANNER_SLIDES[2].classList.add('selected');
 			break;
 
 		case 'manager':
-			HERO.classList.add('scrolled');
 			NAVIGATION_BUTTONS[2].classList.add('selected');
 			BANNER_SLIDES[3].classList.add('selected');
 			break;
 
 		case 'activities':
-			HERO.classList.add('scrolled');
 			NAVIGATION_BUTTONS[3].classList.add('selected');
 			BANNER_SLIDES[4].classList.add('selected');
+			break;
+
+		case 'footer':
 			break;
 		}
 	};
@@ -86,6 +88,10 @@ const updateHero = () => {
 		ACTIVITIES_BORDER &&
 		ACTIVITIES_BORDER.getBoundingClientRect().top < window.innerHeight / 2
 	) changePage('activities');
+	if (
+		FOOTER &&
+		FOOTER.getBoundingClientRect().top < window.innerHeight
+	) changePage('footer');
 };
 
 const navigationButtons = () => {
