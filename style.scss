@@ -12,19 +12,23 @@ $font-arabic: 'sheershak-arabic', sans-serif;
 $font-weight-extra-bold: 800;
 $font-weight-heavy: 900;
 /* PADDING */
-$document-padding: 1rem;
-$section-padding: 3.5rem;
+$header-padding: 1rem;
+$inner-section-padding: 3.5rem;
+$outer-section-padding: 5rem;
 $paragraph-indent: 2rem;
 /* TRANSITION */
 $opacity-transition: opacity 0.4s cubic-bezier(.08,.72,.34,.99);
 $color-transition: color 0.4s cubic-bezier(.08,.72,.34,.99);
 $width-transition: width 0.4s cubic-bezier(.08,.72,.34,.99);
+$height-transition: height 0.4s cubic-bezier(.08,.72,.34,.99);
+$right-transition: right 0.4s cubic-bezier(.08,.72,.34,.99);
 $clip-transition: clip-path 0.4s cubic-bezier(.08,.72,.34,.99);
 /* DIMENSIONS */
 $graphic-max-width: 600px;
 $section-max-width: 800px;
 $banner-height-desktop: 275px;
 $banner-height-mobile: 200px;
+$banner-height-scrolled: 150px;
 /* BREAKPOINTS */
 $mobile-breakpoint: 768px;
 
@@ -228,13 +232,13 @@ img {
 }
 
 .hero {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - $banner-height-desktop);
-
-	@media (max-width: $mobile-breakpoint) {
-		height: calc(100vh - $banner-height-mobile);
-	}
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 1;
 
     .header {
 		background: $white;
@@ -242,8 +246,8 @@ img {
 		width: 100%;
         display: flex;
         justify-content: center;
-        padding: $document-padding 0;
-        z-index: 1;
+        padding: $header-padding 0;
+		z-index: 1;
 
         .logo {
             h1 {
@@ -261,118 +265,119 @@ img {
             position: absolute;
             height: 100%;
             top: 0;
-            right: $document-padding;
+            right: $header-padding;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: right;
         }
-
-		&.scrolled {
-			position: fixed;
-			top: 0;
-
-			.logo {
-				img {
-					width: 100px
-				}
-			}
-		}
     }
 
     .graphic {
-        position: absolute;
-        bottom: 0;
+        position: relative;
         width: 100%;
         display: flex;
-        justify-content: center;
+		flex-direction: column;
+        justify-content: end;
 
         img {
+			position: absolute;
             width: 95%;
             max-width: $graphic-max-width;
+			bottom: 100%;
+			right: 50%;
+			transform: translateX(50%);
+			transition: $right-transition, $width-transition;
         }
-    }
-}
 
-.section {
-    .banner {
-        background: $red;
-		position: relative;
-        width: 100%;
-        height: $banner-height-desktop;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-		@media (max-width: $mobile-breakpoint) {
-			height: $banner-height-mobile;
-		}
-
-		&.main-banner {
-			>h2 {
-				@include clipped-top;
+		.banner {
+			background: $red;
+			position: relative;
+			width: 100%;
+			height: $banner-height-desktop;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			transition: $height-transition;
+	
+			@media (max-width: $mobile-breakpoint) {
+				height: $banner-height-mobile;
 			}
 			
-			>h3 {
-				@include clipped-bottom;
-			}
-
-			.banner-overlay {
+			.banner-slide {
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
-	
-				h2 {
-					@include unclipped;
-				}
-	
-				h3 {
-					@include unclipped;
-	
-					&:first-child {
-						display: flex;
-						justify-content: left;
-					}
-	
-					&:last-child {
-						display: flex;
-						justify-content: right;
-					}
-				}
-			}
-
-			&.scrolled {
-				>h2 {
-					@include unclipped;
-				}
-				
-				>h3 {
-					@include unclipped;
+		
+				h2, h3 {
+					@include clipped-center();
+					text-wrap: nowrap;
 				}
 
-				.banner-overlay {
-					h2 {
-						@include clipped-center;
-					}
-	
+				&.homepage-slide {
 					h3 {
 						&:first-child {
-							@include clipped-top;
+							text-align: left;
 						}
-		
 						&:last-child {
-							@include clipped-bottom;
+							text-align: right;
 						}
-						
+					}
+				}
+
+				&.selected {
+					h2, h3 {
+						@include unclipped();
 					}
 				}
 			}
 		}
     }
 
+	&.scrolled {
+		.header {
+			.logo img {
+				width: 100px;
+			}
+		}
+
+		.graphic {
+			img {
+				right: 0;
+				width: 40%;
+			}
+
+			.banner {
+				height: $banner-height-scrolled;
+			}
+		}
+	}
+}
+
+.dummy-element {
+	position: relative;
+	height: 100vh;
+	margin-top: -$banner-height-desktop;
+	z-index: -1;
+	
+	@media (max-width: $mobile-breakpoint) {
+		margin-top: -$banner-height-mobile;
+	}
+}
+
+.border {
+	background: $brown;
+	height: 1px;
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+}
+
+.section {
+	padding: $outer-section-padding 0;
+
     .section-content {
-        padding: $section-padding 0;
         width: 90%;
         max-width: $section-max-width;
         margin: auto;
@@ -383,7 +388,7 @@ img {
 	
 			.activity {
 				width: 50%;
-				margin-bottom: $section-padding;
+				margin-bottom: $inner-section-padding;
 
 				&:nth-last-child(-n+2) {
 					margin-bottom: 0;
@@ -396,7 +401,7 @@ img {
 					align-items: center;
 
 					&:nth-last-child(-n+2) {
-						margin-bottom: $section-padding;
+						margin-bottom: $inner-section-padding;
 					}
 
 					&:last-child {
@@ -410,7 +415,7 @@ img {
 
 .footer {
 	background: $red;
-	padding: $section-padding 0;
+	padding: $inner-section-padding 0;
 	text-align: center;
 
 	a {
@@ -418,7 +423,7 @@ img {
 	}
 
 	>h4 {
-		padding-top: $section-padding;
+		padding-top: $inner-section-padding;
 	}
 
 	.registrations {
@@ -429,7 +434,7 @@ img {
 			text-align: left;
 
 			&:first-child {
-				padding-right: $section-padding;
+				padding-right: $inner-section-padding;
 			}
 		}
 	}
