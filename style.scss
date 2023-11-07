@@ -350,6 +350,11 @@ img {
 	height: 100vh;
 	margin-top: -$banner-height;
 	z-index: -1;
+	transition: $height-transition;
+
+	&.scrolled {
+		height: 400px;
+	}
 }
 
 .border {
@@ -362,12 +367,6 @@ img {
 
 .section {
 	padding: $outer-section-padding 0;
-
-	/*&:first-of-type {
-		padding-top: 0;
-		padding-bottom: $outer-section-padding;
-		background: blue !important;
-	}*/
 
     .section-content {
         width: 90%;

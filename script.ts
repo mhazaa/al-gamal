@@ -5,10 +5,11 @@ const LOGO: HTMLAnchorElement | null = document.body.querySelector('#logo');
 const NAVIGATION_BUTTONS: NodeListOf<HTMLAnchorElement> | undefined = document.body.querySelector('.nav-list')?.querySelectorAll('a');
 const BANNER_SLIDES: NodeListOf<HTMLDivElement> | null = document.body.querySelectorAll('.banner-slide');
 
-const BACKGROUND_BORDER: HTMLDivElement | null = document.body.querySelector('#background-border');
 const ORGANIZATION_BORDER: HTMLDivElement | null = document.body.querySelector('#organization-border');
 const MANAGER_BORDER: HTMLDivElement | null = document.body.querySelector('#manager-border');
 const ACTIVITIES_BORDER: HTMLDivElement | null = document.body.querySelector('#activities-border');
+
+const DUMMY_ELEMENT: HTMLDivElement | null = document.body.querySelector('.dummy-element');
 
 const FOOTER: HTMLDivElement | null = document.body.querySelector('.footer');
 
@@ -34,7 +35,7 @@ const resetNavigationButtons = () => NAVIGATION_BUTTONS?.forEach(button => butto
 const resetSlides = () => BANNER_SLIDES?.forEach(slide => slide.classList.remove('selected'));
 
 const updateHero = () => {
-	if (!HERO || !NAVIGATION_BUTTONS || !BANNER_SLIDES) return;
+	if (!HERO || !NAVIGATION_BUTTONS || !BANNER_SLIDES || !DUMMY_ELEMENT) return;
 
 	const st = document.documentElement.scrollTop;
 
@@ -45,11 +46,13 @@ const updateHero = () => {
 		switch (page) {
 		case 'home':
 			HERO.classList.remove('scrolled');
+			DUMMY_ELEMENT.classList.remove('scrolled');
 			BANNER_SLIDES[0].classList.add('selected');
 			break;
 
 		case 'background':
 			HERO.classList.add('scrolled');
+			DUMMY_ELEMENT.classList.add('scrolled');
 			NAVIGATION_BUTTONS[0].classList.add('selected');
 			BANNER_SLIDES[1].classList.add('selected');
 			break;
@@ -103,18 +106,19 @@ const navigationButtons = () => {
 	
 	if (!NAVIGATION_BUTTONS) return;
 
-	const scrollIntoSection = (section: HTMLDivElement | null) => {
-		if (!section || !HEADER) return;
+	const scrollIntoSection = (section?: HTMLDivElement | null) => {
+		if (!HEADER) return;
+		if (!section) return window.scrollTo({ top: 2, behavior: 'smooth', });
 		const y = section.getBoundingClientRect().top + window.scrollY - HEADER.offsetHeight;
 		window.scrollTo({ top: y, behavior: 'smooth', });
 	};
 
-	const navBtnControls = (navBtn: HTMLAnchorElement | null, section: HTMLDivElement | null) => {
-		if (!navBtn || !section || !HEADER) return;
+	const navBtnControls = (navBtn: HTMLAnchorElement | null, section?: HTMLDivElement | null) => {
+		if (!navBtn || !HEADER) return;
 		navBtn.addEventListener('click', () => scrollIntoSection(section));
 	};
 
-	navBtnControls(NAVIGATION_BUTTONS[0], BACKGROUND_BORDER);
+	navBtnControls(NAVIGATION_BUTTONS[0]);
 	navBtnControls(NAVIGATION_BUTTONS[1], ORGANIZATION_BORDER);
 	navBtnControls(NAVIGATION_BUTTONS[2], MANAGER_BORDER);
 	navBtnControls(NAVIGATION_BUTTONS[3], ACTIVITIES_BORDER);
