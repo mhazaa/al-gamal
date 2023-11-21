@@ -1,6 +1,5 @@
 const INTRO: HTMLDivElement | null = document.body.querySelector('.intro');
 const HERO: HTMLDivElement | null = document.body.querySelector('.hero');
-const HEADER: HTMLDivElement | null = document.body.querySelector('.header');
 const LOGO: HTMLAnchorElement | null = document.body.querySelector('#logo');
 const NAVIGATION_BUTTONS: NodeListOf<HTMLAnchorElement> | undefined = document.body.querySelector('.nav-list')?.querySelectorAll('a');
 const BANNER_SLIDES: NodeListOf<HTMLDivElement> | null = document.body.querySelectorAll('.banner-slide');
@@ -34,7 +33,7 @@ const resetNavigationButtons = () => NAVIGATION_BUTTONS?.forEach(button => butto
 
 const resetSlides = () => BANNER_SLIDES?.forEach(slide => slide.classList.remove('selected'));
 
-const updateHero = () => {
+const updateBasedOnScroll = () => {
 	if (!HERO || !NAVIGATION_BUTTONS || !BANNER_SLIDES || !DUMMY_ELEMENT) return;
 
 	const st = document.documentElement.scrollTop;
@@ -97,25 +96,24 @@ const updateHero = () => {
 	) changePage('footer');
 };
 
-const navigationButtons = () => {
+const updateNavigationButtons = () => {
 	LOGO?.addEventListener('click', () => {
 		document.body.scrollIntoView({ behavior: 'smooth', });
 	});
 
-	//const path = location.pathname.split('/')[1];
-	
 	if (!NAVIGATION_BUTTONS) return;
 
 	const scrollIntoSection = (section?: HTMLDivElement | null) => {
-		if (!HEADER) return;
 		if (!section) return window.scrollTo({ top: 2, behavior: 'smooth', });
-		const y = section.getBoundingClientRect().top + window.scrollY - HEADER.offsetHeight;
+		const st = document.documentElement.scrollTop;
+		const dummyObjectHeight = (st > 1) ? 0 : 400;
+		const collapsedHeaderHeight = 128;
+		const y = section.getBoundingClientRect().top + window.scrollY - dummyObjectHeight - collapsedHeaderHeight;
 		window.scrollTo({ top: y, behavior: 'smooth', });
 	};
 
 	const navBtnControls = (navBtn: HTMLAnchorElement | null, section?: HTMLDivElement | null) => {
-		if (!navBtn || !HEADER) return;
-		navBtn.addEventListener('click', () => scrollIntoSection(section));
+		navBtn?.addEventListener('click', () => scrollIntoSection(section));
 	};
 
 	navBtnControls(NAVIGATION_BUTTONS[0]);
@@ -126,9 +124,9 @@ const navigationButtons = () => {
 
 const init = () => {
 	updateIntro();
-	updateHero();
-	window.addEventListener('scroll', updateHero);
-	navigationButtons();
+	updateBasedOnScroll();
+	window.addEventListener('scroll', updateBasedOnScroll);
+	updateNavigationButtons();
 };
 
 init();
