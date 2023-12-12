@@ -36,7 +36,7 @@ const resetNavigationButtons = () => NAVIGATION_BUTTONS?.forEach(button => butto
 
 const resetSlides = () => BANNER_SLIDES?.forEach(slide => slide.classList.remove('selected'));
 
-const updateBasedOnScroll = () => {
+const updatePage = () => {
 	if (!HERO || !NAVIGATION_BUTTONS || !BANNER_SLIDES || !DUMMY_ELEMENT) return;
 
 	const st = document.documentElement.scrollTop;
@@ -147,8 +147,9 @@ const updateNavigationButtons = () => {
 
 const init = () => {
 	updateIntro();
-	updateBasedOnScroll();
-	window.addEventListener('scroll', updateBasedOnScroll);
+	updatePage();
+	window.addEventListener('scroll', updatePage);
+	window.addEventListener('resize', updatePage);
 	updateNavigationButtons();
 };
 

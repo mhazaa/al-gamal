@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "concurrently \"sass style.scss style.css\" \"tsc script.ts\"",
-	"dev": "concurrently \"sass style.scss style.css --watch\" \"tsc script.ts --watch\""
+	  "dev": "concurrently \"sass style.scss style.css --watch\" \"tsc script.ts --watch\""
   },
   "keywords": [],
   "author": "Magdi Hazaa",
