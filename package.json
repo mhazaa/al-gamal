@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "concurrently \"sass style.scss style.css\" \"tsc script.ts\"",
-	  "dev": "concurrently \"sass style.scss style.css --watch\" \"tsc script.ts --watch\""
+	"build": "concurrently \"sass style.scss style.css\" \"tsc script.ts\"",
+	"dev": "concurrently \"sass style.scss style.css --watch\" \"tsc script.ts --watch\""
   },
   "keywords": [],
   "author": "Magdi Hazaa",
